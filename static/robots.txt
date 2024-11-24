@@ -1,0 +1,3 @@
+Sitemap: https://vanmenxel-website-starter-kit.netlify.com/sitemap.xml
+User-agent: *
+Allow: /
