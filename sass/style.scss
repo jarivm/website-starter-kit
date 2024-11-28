@@ -197,14 +197,7 @@ h6 {
 
 #header {
 	background-color: var(--bg-color);
-	position: sticky;
-	top: 0;
 	width: 100%;
-	z-index: 50;
-	box-shadow: rgba(149, 157, 165, 0.2) 0rem 0.5rem 1.5rem;
-
-	// Alternative style:
-	// border-bottom: 1px solid var(--text-color);
 
 	.header__top {
 		display: flex;
@@ -247,11 +240,6 @@ h6 {
 }
 @media screen and (max-width: $content-width) {
 	#nav {
-		position: absolute;
-		width: 100%;
-
-		border-bottom: 1px solid var(--text-color);
-
 		ul {
 			li > .button {
 				padding: $margin-l;
