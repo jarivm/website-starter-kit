@@ -35,7 +35,7 @@ email = "info@example.com"
 phone = "06 XX XX XX XX"
 kvk_nr = "XXXXXXX"
 btw_id = "XXXXXXX"
-slogan = "Wij werken aan een betere wereld. Deze tekst kan hier staan maar het hoeft niet."
+slogan = "Dit is de slogan van een voorbeeldwebsite. Je kan hier iets neerzetten of gewoon helemaal niets."
 
 [extra.org.address]
 

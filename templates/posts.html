@@ -13,20 +13,7 @@
 
 			<div class="posts">
 				{% for post in pages %}
-					<article>
-						<a href="{{ post.path }}">
-							<img
-								src="{{ post.extra.image }}"
-								alt="{{ post.extra.image_alt }}"
-							/>
-
-							<h3>{{ post.title }}</h3>
-
-							<time datetime="{{ post.date }}"
-								>{{ post.date | date(locale="nl_NL", format="%_d %B %Y") }}</time
-							>
-						</a>
-					</article>
+					{{ macros::post(page=post) }}
 				{% endfor %}
 			</div>
 		{% endfor %}

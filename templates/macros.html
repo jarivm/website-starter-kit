@@ -18,3 +18,27 @@
 		</div>
 	</section>
 {% endmacro cta %}
+
+{% macro icon(name) %}
+	<i class="fa-solid fa-{{ name }}"></i>
+{% endmacro icon %}
+
+{% macro post(page) %}
+	<article>
+		<a href="{{ page.path }}">
+			<img
+				class="post__thumbnail"
+				src="{{ page.extra.image }}"
+				alt="{{ page.extra.image_alt }}"
+			/>
+
+			<div class="post__content">
+				<h3>{{ page.title }}</h3>
+
+				<time datetime="{{ page.date }}"
+					>{{ page.date | date(locale="nl_NL", format="%_d %B %Y") }}</time
+				>
+			</div>
+		</a>
+	</article>
+{% endmacro posts %}

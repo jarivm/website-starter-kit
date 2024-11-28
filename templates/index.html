@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 {% block content %}
 	<section
-		class="hero"
+		class="hero hero--large"
 		style="
 			background-image: linear-gradient(
 					rgba(0, 0, 0, 0.4),
@@ -11,9 +11,9 @@
 		"
 	>
 		<div class="hero__content">
-			<h1>Dit is een demonstratie van een website</h1>
+			<h1>Dit is een demonstratie van een starter kit</h1>
 
-			<p>Wil je ook een website?</p>
+			<p>Wil je ook een website? Die kan je hiermee maken.</p>
 
 			<a class="button button--primary" href="/contact/">Contact</a>
 		</div>
@@ -28,37 +28,15 @@
 			<h2>Nieuwste posts</h2>
 		</div>
 
-		<div class="posts posts--horizontal">
-			{% for post in posts.pages %}
-				<article>
-					<a href="{{ post.path }}">
-						<img
-							class="post__thumbnail"
-							src="{{ post.extra.image }}"
-							alt="{{ post.extra.image_alt }}"
-						/>
-
-						<div class="post__content">
-							<h3>{{ post.title }}</h3>
-
-							<time datetime="{{ post.date }}"
-								>{{ post.date | date(locale="nl_NL", format="%_d %B %Y") }}</time
-							>
-						</div>
-					</a>
-				</article>
+		<div class="posts">
+			{% for post in posts.pages | slice(start=0, end=3) %}
+				{{ macros::post(page=post) }}
 			{% endfor %}
-
-			<article>
-				<a href="/posts/">
-					<div class="post__content">
-						<div class="post__thumbnail"></div>
-
-						<h3>>> Alle posts</h3>
-					</div>
-				</a>
-			</article>
 		</div>
+
+		<a class="button" href="/posts/"
+			>{{ macros::icon(name="arrow-right") }} Alle posts</a
+		>
 	</section>
 
 	<section class="section--wide">

@@ -7,8 +7,8 @@ $font-family-normal: system-ui, "Segoe UI", Roboto, Helvetica, Arial, sans-serif
 
 $text-color: #170604;
 $bg-color: #fef8f7;
-$primary-color: #9c230e;
-$secondary-color: #8eeab3;
+$primary-color: #ff4719;
+$secondary-color: #11b252;
 $accent-color: #61cfe1;
 
 $content-width: 54rem;
@@ -48,9 +48,9 @@ $radius-xl: 2rem;
 @mixin dark-theme {
 	--text-color: #fbece9;
 	--bg-color: #090201;
-	--primary-color: #9b230e;
-	--secondary-color: #338319;
-	--accent-color: #2cd749;
+	--primary-color: #{$primary-color};
+	--secondary-color: #{$secondary-color};
+	--accent-color: #{$accent-color};
 }
 
 :root {
@@ -121,6 +121,7 @@ li {
 
 h1 {
 	font-size: $font-size-h1;
+	font-weight: 900;
 }
 h2 {
 	font-size: $font-size-h2;
@@ -143,10 +144,9 @@ h6 {
 #header {
 	background-color: var(--bg-color);
 	border-bottom: 1px solid var(--text-color);
-	position: fixed;
+	position: sticky;
 	top: 0;
 	width: 100%;
-	left: 0;
 	z-index: 50;
 
 	.header__top {
@@ -162,6 +162,7 @@ h6 {
 		margin-right: auto;
 		width: 100%;
 		max-width: $content-width;
+		position: relative;
 	}
 }
 
@@ -175,9 +176,6 @@ h6 {
 		margin: 0;
 		display: flex;
 		flex-direction: column;
-		li > .button {
-			padding: $margin-l;
-		}
 		@media (hover: hover) {
 			li > .button:hover {
 				background: var(--text-color);
@@ -187,6 +185,22 @@ h6 {
 		li > .button:active {
 			background: var(--text-color);
 			color: var(--bg-color);
+		}
+	}
+}
+@media screen and (max-width: $content-width) {
+	#nav {
+		position: absolute;
+		width: 100%;
+
+		border-bottom: 1px solid var(--text-color);
+
+		ul {
+			li > .button {
+				padding: $margin-l;
+				width: 100%;
+				border-radius: 0;
+			}
 		}
 	}
 }
@@ -241,7 +255,7 @@ h6 {
 	}
 
 	.footer__column h2 {
-		font-size: $font-size-h4;
+		font-size: $font-size-h5;
 		text-transform: uppercase;
 		border-bottom: 2px solid var(--primary-color);
 		width: fit-content;
@@ -323,14 +337,9 @@ h6 {
 	flex-wrap: wrap;
 	gap: $margin-l;
 
-	&.posts--horizontal {
-		flex-wrap: nowrap;
-		overflow: scroll;
-	}
-
 	article {
 		min-width: 12rem;
-		flex: 0 0 33.3333%;
+		flex: 1 0 clamp(25%, 2vw, 20rem);
 
 		.post__thumbnail {
 			border-top-left-radius: $radius-m;
@@ -348,9 +357,13 @@ h6 {
 			color: var(--text-color);
 			border-radius: $radius-m;
 			border: 1px solid var(--text-color);
+			transition:
+				transform 0.1s ease,
+				box-shadow 0.1s ease;
 		}
 
 		a:hover {
+			transform: translate(0, -8px);
 			box-shadow:
 				0 0.1rem 0.2rem rgba(0, 0, 0, 0.2),
 				0 0.1rem 0.2rem rgba(0, 0, 0, 0.4);
@@ -365,14 +378,14 @@ h6 {
 .address {
 	font-size: $font-size-p;
 	font-style: normal;
-}
-.address a {
-	color: var(--text-color);
-	text-decoration: none;
-}
-.address a:hover {
-	color: var(--text-color);
-	text-decoration: underline;
+	a {
+		color: var(--text-color);
+		text-decoration: none;
+	}
+	a:hover {
+		color: var(--text-color);
+		text-decoration: underline;
+	}
 }
 
 .veggieburger {
@@ -426,25 +439,20 @@ h6 {
 	background-size: cover;
 	background-repeat: no-repeat;
 	background-position: center;
-	min-height: 80vh;
 
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
 	width: 100%;
 
-	&.hero--small {
-		min-height: 40vh;
-	}
-
 	& .hero__content {
-		padding: 1rem 0.5rem;
 		width: 100%;
 		max-width: $content-width;
 
 		& h1 {
 			color: #fff;
 			font-weight: bold;
+			line-height: 1.2;
 			text-shadow:
 				0 0.1rem 0.2rem rgba(0, 0, 0, 0.2),
 				0 0.1rem 0.2rem rgba(0, 0, 0, 0.4);
@@ -457,6 +465,34 @@ h6 {
 			text-shadow:
 				0 0.1rem 0.2rem rgba(0, 0, 0, 0.2),
 				0 0.1rem 0.2rem rgba(0, 0, 0, 0.4);
+		}
+	}
+
+	&.hero--large {
+		min-height: 80vh;
+
+		.hero__content {
+			padding: 1rem 0.5rem;
+		}
+	}
+
+	&.hero--small {
+		min-height: 40vh;
+	}
+
+	&.hero--block {
+		min-height: 30vh;
+		border-radius: $radius-l;
+
+		padding: $margin-xl;
+
+		& h1 {
+			font-size: $font-size-h3;
+		}
+
+		& p {
+			font-size: $font-size-p;
+			margin-bottom: 0;
 		}
 	}
 }
@@ -528,11 +564,13 @@ h6 {
 
 	border-radius: $radius-s;
 
-	border: 2px solid var(--text-color);
-	padding: $margin-m $margin-l;
+	border: 1px solid var(--text-color);
+	padding: $margin-m 1.5rem;
 
 	background-color: var(--bg-color);
 	color: var(--text-color);
+
+	transition: background-color 0.1s ease-out, color 0.1s ease-out;
 
 	@media (hover: hover) {
 		&.button:hover {
@@ -546,7 +584,7 @@ h6 {
 
 	&.button--primary {
 		background-color: var(--primary-color);
-		color: var(--bg-color);
+		color: #000;
 	}
 }
 
@@ -558,47 +596,61 @@ h6 {
 
 .cta {
 	display: flex;
-	flex-direction: row;
+	flex-direction: column;
 	align-items: center;
-	justify-content: space-between;
-	width: 44rem;
+	justify-content: center;
+	gap: $margin-xl;
 
 	h2 {
+		text-align: center;
 		font-size: $font-size-h4;
+		margin-bottom: $margin-s;
+	}
+}
+@media screen and (min-width: $content-width) {
+	.cta {
+		flex-direction: row;
+
+		h2 {
+			margin: 0;
+			text-align: left;
+		}
 	}
 }
 
 .content {
 	h2 {
 		text-align: center;
-		margin-top: $margin-xxl;
-		margin-bottom: $margin-xl;
+		margin-top: $margin-xl;
+		margin-bottom: $margin-l;
 	}
 	h3 {
-		margin-top: $margin-xxl;
-		margin-bottom: $margin-xl;
+		margin-top: $margin-xl;
+		margin-bottom: $margin-l;
 	}
 	h4 {
-		margin-top: $margin-xxl;
-		margin-bottom: $margin-xl;
+		margin-top: $margin-xl;
+		margin-bottom: $margin-l;
 	}
 	h5 {
-		margin-top: $margin-xxl;
-		margin-bottom: $margin-xl;
+		margin-top: $margin-xl;
+		margin-bottom: $margin-l;
 	}
 	h6 {
-		margin-top: $margin-xxl;
-		margin-bottom: $margin-xl;
+		margin-top: $margin-xl;
+		margin-bottom: $margin-l;
 	}
 
 	a {
-		color: inherit;
+		color: var(--primary-color);
 		text-decoration: none;
 		border-bottom: 2px solid var(--primary-color);
 
+		transition: background-color 0.05s ease-out, color 0.05s ease-out;
+
 		@media (hover: hover) {
 			&:hover {
-				color: var(--bg-color);
+				color: var(--text-color);
 				background-color: var(--primary-color);
 			}
 		}
@@ -611,7 +663,7 @@ h6 {
 }
 
 #theme-toggle {
-	min-width: 4rem;
+	width: 4rem;
 }
 
 .skiplinks a {
