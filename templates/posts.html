@@ -7,9 +7,12 @@
 
 		{% for month, pages in paginator.pages | group_by(attribute="month") %}
 			{% set first_page = pages | nth(n=0) %}
-			<h2>
-				{{ first_page.date | date(locale="nl_NL", format="%B %Y") | capitalize }}
-			</h2>
+
+			<div class="content">
+				<h2>
+					{{ first_page.date | date(locale="nl_NL", format="%B %Y") | capitalize }}
+				</h2>
+			</div>
 
 			<div class="posts">
 				{% for post in pages %}
