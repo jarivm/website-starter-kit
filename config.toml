@@ -17,6 +17,13 @@ external_links_no_referrer = true
 
 [translations]
 
+button_contact = "Contact"
+
+newest_posts_title = "Nieuwste posts"
+newest_posts_view_all = "Alle posts"
+
+cta_title = "Wil je dit ook? Laat het ons weten."
+
 form_name = "Naam"
 form_email = "E-mail"
 form_message = "Bericht"

@@ -11,11 +11,15 @@
 		"
 	>
 		<div class="hero__content">
-			<h1>Dit is een demonstratie van een starter kit</h1>
+			<h1>{{ section.extra.hero_slogan }}</h1>
 
-			<p>Wil je ook een website? Die kan je hiermee maken.</p>
+			<p>{{ section.extra.hero_description }}</p>
 
-			<a class="button button--primary" href="/contact/">Contact</a>
+			<a
+				class="button button--primary"
+				href="{{ get_url(path="@/contact.md", lang=lang) }}"
+				>{{ trans(key="button_contact", lang=lang) }}</a
+			>
 		</div>
 	</section>
 
@@ -25,7 +29,7 @@
 
 	<section class="section">
 		<div class="content">
-			<h2>Nieuwste posts</h2>
+			<h2>{{ trans(key="newest_posts_title", lang=lang) }}</h2>
 		</div>
 
 		<div class="posts">
@@ -34,17 +38,24 @@
 			{% endfor %}
 		</div>
 
-		<a class="button" href="/posts/"
-			>{{ macros::icon(name="arrow-right") }} Alle posts</a
+		<a
+			class="button"
+			href="{{ get_url(path="@/posts/_index.md", lang=lang) }}"
+			>{{ macros::icon(name="arrow-right") }}
+			{{ trans(key="newest_posts_view_all", lang=lang) }}</a
 		>
 	</section>
 
 	<section class="section--wide">
 		<div class="section cta">
-			<h2>Wil je dit ook? Laat het ons weten.</h2>
+			<h2>{{ trans(key="cta_title", lang=lang) }}</h2>
 
 			<p>
-				<a class="button button--primary" href="/contact/">Contact</a>
+				<a
+					class="button button--primary"
+					href="{{ get_url(path="@/contact.md", lang=lang) }}"
+					>{{ trans(key="button_contact", lang=lang) }}</a
+				>
 			</p>
 		</div>
 	</section>

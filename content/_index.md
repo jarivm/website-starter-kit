@@ -1,6 +1,8 @@
 +++
 [extra]
 hero_image = "https://picsum.photos/seed/hero_home/1280/720"
+hero_slogan = "Dit is een demonstratie van een starter kit"
+hero_description = "Wil je ook een website? Die kan je hiermee maken."
 nav = [
     { href="/", title="Home" },
     { href="/diensten/", title="Diensten", nav = [ 
