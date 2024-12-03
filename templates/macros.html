@@ -1,7 +1,3 @@
-{% macro example() %}
-	<p>Example</p>
-{% endmacro cta %}
-
 {% macro hero_small(title, image) %}
 	<section
 		class="hero hero--small"
@@ -18,6 +14,46 @@
 		</div>
 	</section>
 {% endmacro cta %}
+
+{% macro nav_content(nav, depth=0) %}
+{% if depth == 1 %}
+<div class="dropdown-wrapper">
+	<ul class="dropdown-content">
+{% else %}
+	<ul>
+{% endif %}
+		{% for n in nav %}
+			{% set style = "button--borderless" %}
+			{% if n.is_primary %}
+				{% set style = "" %}
+			{% endif %}
+
+			<li>
+				<a
+					class="button {{ style }}"
+					href="{{ n.href }}"
+					title="{{ n.title }}"
+					>
+
+					{% if n.nav %}
+					<i class="fa-solid fa-angle-down"></i>
+					{% endif %}
+				
+					{{ n.title }}</a
+				>
+
+				{% if n.nav %}
+				{{ self::nav_content(nav=n.nav, depth=depth + 1) }}
+				{% endif %}
+			</li>
+		{% endfor %}
+{% if depth == 1 %}
+	</ul>
+	</div>
+{% else %}
+	</ul>
+{% endif %}
+{% endmacro nav_content %}
 
 {% macro icon(name) %}
 	<i class="fa-solid fa-{{ name }}"></i>

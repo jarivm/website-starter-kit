@@ -109,50 +109,34 @@
 
 		<header id="header">
 			<div class="header__content">
-				<div class="header__top">
-					<a
-						class="link"
-						title="{{ config.title }}"
-						href="{{ index.path }}"
-						>{{ config.title }}</a
+				<a
+					class="link"
+					title="{{ config.title }}"
+					href="{{ index.path }}"
+					>{{ config.title }}</a
+				>
+
+				<div class="header__content__wrapper">
+					<button
+						id="theme-toggle"
+						class="button button--borderless"
+						title="Thema veranderen"
 					>
-
-					<button id="nav-toggle" class="veggieburger">
-						<div class="veggieburger__line"></div>
-						<div class="veggieburger__line"></div>
-						<div class="veggieburger__line"></div>
+						<i id="theme-toggle-icon" class="fa-solid"></i>
 					</button>
+
+					<nav>
+						<button id="nav-toggle" class="veggieburger">
+							<div class="veggieburger__line"></div>
+							<div class="veggieburger__line"></div>
+							<div class="veggieburger__line"></div>
+						</button>
+
+						<div id="nav" class="nav" style="max-height: 0px">
+							{{ macros::nav_content(nav=index.extra.nav) }}
+						</div>
+					</nav>
 				</div>
-
-				<nav id="nav" class="nav" style="max-height: 0px">
-					<ul>
-						{% for link in index.extra.nav %}
-							{% set style = "button--borderless" %}
-							{% if link.is_primary %}
-								{% set style = "" %}
-							{% endif %}
-
-							<li>
-								<a
-									class="button {{ style }}"
-									href="{{ link.href }}"
-									title="{{ link.title }}"
-									>{{ link.title }}</a
-								>
-							</li>
-						{% endfor %}
-
-						<li>
-							<button
-								id="theme-toggle"
-								class="button button--borderless"
-								title="Thema veranderen"
-							>
-								<i id="theme-toggle-icon" class="fa-solid"></i>
-							</button>
-						</li>
-					</ul>
-				</nav>
 			</div>
 		</header>
 
@@ -175,7 +159,7 @@
 				</div>
 
 				<div class="footer__column">
-					<h2>Navigatie</h2>
+					<h2>{{ trans(key="footer_navigation", lang=lang) }}</h2>
 
 					<ul>
 						{% for link in index.extra.footer_nav %}
@@ -191,7 +175,7 @@
 				</div>
 
 				<div class="footer__column">
-					<h2>Gegevens</h2>
+					<h2>{{ trans(key="footer_info", lang=lang) }}</h2>
 
 					<ul>
 						{% if config.extra.org.email %}
@@ -243,8 +227,13 @@
 
 				<div class="footer__column">
 					<p>
-						Ontwikkeld door
-						<a href="https://vanmenxel.nl" target="_blank" rel="noreferrer noopener">Van Menxel Solutions</a>
+						{{ trans(key="developed_by", lang=lang) }}
+						<a
+							href="https://vanmenxel.nl"
+							target="_blank"
+							rel="noreferrer noopener"
+							>Van Menxel Solutions</a
+						>
 					</p>
 				</div>
 			</div>

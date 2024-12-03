@@ -3,12 +3,18 @@
 hero_image = "https://picsum.photos/seed/hero_home/1280/720"
 nav = [
     { href="/", title="Home" },
+    { href="/diensten/", title="Diensten", nav = [ 
+        { href="/diensten/a/", title="Dienst A" }, 
+        { href="/diensten/b/", title="Dienst B" }, 
+        { href="/diensten/c/", title="Dienst C" } 
+    ] },
     { href="/posts/", title="Posts" },
     { href="/over/", title="Over" },
     { href="/contact/", title="Contact", is_primary=true},
 ]
 footer_nav = [
     { href="/", title="Home" },
+    { href="/diensten/", title="Diensten" },
     { href="/posts/", title="Posts" },
     { href="/over/", title="Over" },
     { href="/contact/", title="Contact"},

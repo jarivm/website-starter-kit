@@ -22,6 +22,11 @@ form_email = "E-mail"
 form_message = "Bericht"
 form_submit = "Formulier verzenden"
 
+developed_by = "Ontwikkeld door"
+
+footer_navigation = "Navigatie"
+footer_info = "Gegevens"
+
 [extra]
 
 copyright_start_year = "2024"
