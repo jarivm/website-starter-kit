@@ -339,8 +339,6 @@ h6 {
 
 /* Footer */
 .footer__content {
-	margin-top: $margin-l;
-
 	margin-left: auto;
 	margin-right: auto;
 	width: 100%;
@@ -354,6 +352,10 @@ h6 {
 	.footer__column {
 		flex: 0 1 auto;
 		margin-top: $margin-xl;
+	}
+
+	.footer__column--compact {
+		margin: 0;
 	}
 
 	.footer__column h2 {

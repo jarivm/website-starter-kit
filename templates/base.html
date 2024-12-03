@@ -211,7 +211,7 @@
 			</div>
 
 			<div class="footer__content">
-				<div class="footer__column">
+				<div class="footer__column footer__column--compact">
 					<p>
 						{% set year = now() | date(format="%Y") %}
 
@@ -225,7 +225,7 @@
 					</p>
 				</div>
 
-				<div class="footer__column">
+				<div class="footer__column footer__column--compact">
 					<p>
 						{{ trans(key="developed_by", lang=lang) }}
 						<a
