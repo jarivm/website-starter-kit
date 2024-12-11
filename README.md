@@ -1,6 +1,6 @@
-# Static Website Starting Kit
+# Website Starter Kit
 
-[![Netlify Status](https://api.netlify.com/api/v1/badges/9966e6f1-72ba-4a2a-aafa-d6dacc315818/deploy-status)](https://app.netlify.com/sites/vanmenxel-website-starter-kit/deploys)
+[![Netlify Status](https://api.netlify.com/api/v1/badges/4927a76f-f3dc-4bba-8e3f-d402d668733d/deploy-status)](https://app.netlify.com/sites/vanmenxel-website-starter-kit/deploys)
 
 Starter kit for custom websites, initiated and used by [Van Menxel Solutions](https://vanmenxel.nl). This starter kit uses static site generator [Zola](https://getzola.org), [Decap CMS](https://decapcms.org/) for the admin environment and [SCSS](https://sass-lang.com/documentation/syntax/) for CSS preprocessing.
 
