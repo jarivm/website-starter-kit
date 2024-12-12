@@ -88,7 +88,9 @@
 		/>
 
 		<!-- Netlify identity -->
-		<script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+		{% if get_env(name="VANMENXEL_BUILD", default="dev") == "prod" %}
+			<script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+		{% endif %}
 
 		<!-- Other -->
 		{% if page.extra.noindex %}
@@ -248,16 +250,18 @@
 
 		<script src="{{ get_url(path='/main.js') }}" type="module"></script>
 
-		<script>
-			if (window.netlifyIdentity) {
-				window.netlifyIdentity.on("init", (user) => {
-					if (!user) {
-						window.netlifyIdentity.on("login", () => {
-							document.location.href = "/admin/";
-						});
-					}
-				});
-			}
-		</script>
+		{% if get_env(name="VANMENXEL_BUILD", default="dev") == "prod" %}
+			<script>
+				if (window.netlifyIdentity) {
+					window.netlifyIdentity.on("init", (user) => {
+						if (!user) {
+							window.netlifyIdentity.on("login", () => {
+								document.location.href = "/admin/";
+							});
+						}
+					});
+				}
+			</script>
+		{% endif %}
 	</body>
 </html>
