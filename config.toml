@@ -17,6 +17,15 @@ external_links_no_referrer = true
 
 [translations]
 
+skip_main_content = "Naar hoofdinhoud"
+skip_navigation = "Naar navigatie"
+
+nav_toggle_open = "Open menu"
+nav_toggle_close = "Sluit menu"
+
+theme_to_dark = "Donker thema"
+theme_to_light = "Licht thema"
+
 button_contact = "Contact"
 
 newest_posts_title = "Nieuwste posts"

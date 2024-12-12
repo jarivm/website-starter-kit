@@ -103,40 +103,47 @@
 
 	<body ontouchstart="">
 		<div class="skiplinks">
-			<a href="#main">Skip naar main content</a>
-			<a href="#nav">Skip naar main menu</a>
+			<a href="#main">{{ trans(key="skip_main_content", lang=lang) }}</a>
+			<a href="#navigation"
+				>{{ trans(key="skip_navigation", lang=lang) }}</a
+			>
 		</div>
 
 		<header id="header">
 			<div class="header__content">
 				<a
-					class="link"
+					class="link logo"
 					title="{{ config.title }}"
 					href="{{ index.path }}"
 					>{{ config.title }}</a
 				>
 
-				<div class="header__content__wrapper">
+				<nav id="navigation">
 					<button
-						id="theme-toggle"
-						class="button button--borderless"
-						title="Thema veranderen"
+						id="nav-toggle"
+						class="veggieburger"
+						aria-controls="nav"
+						data-open-title="{{ trans(key="nav_toggle_open", lang=lang) }}"
+						data-close-title="{{ trans(key="nav_toggle_close", lang=lang) }}"
 					>
-						<i id="theme-toggle-icon" class="fa-solid"></i>
+						<div class="veggieburger__line"></div>
+						<div class="veggieburger__line"></div>
+						<div class="veggieburger__line"></div>
 					</button>
 
-					<nav>
-						<button id="nav-toggle" class="veggieburger">
-							<div class="veggieburger__line"></div>
-							<div class="veggieburger__line"></div>
-							<div class="veggieburger__line"></div>
-						</button>
+					<div id="nav" class="nav" style="max-height: 0px">
+						{{ macros::nav_content(nav=index.extra.nav) }}
+					</div>
+				</nav>
 
-						<div id="nav" class="nav" style="max-height: 0px">
-							{{ macros::nav_content(nav=index.extra.nav) }}
-						</div>
-					</nav>
-				</div>
+				<button
+					id="theme-toggle"
+					class="button button--borderless"
+					data-to-dark-title="{{ trans(key="theme_to_dark", lang=lang) }}"
+					data-to-light-title="{{ trans(key="theme_to_light", lang=lang) }}"
+				>
+					<i id="theme-toggle-icon" class="fa-solid"></i>
+				</button>
 			</div>
 		</header>
 

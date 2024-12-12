@@ -8,11 +8,27 @@ function applyNavigation() {
 	if (nav.style.maxHeight == "0px") {
 		nav.setAttribute("data-is-open", "false");
 		navToggle.setAttribute("data-is-open", "false");
-		navToggle.setAttribute("aria-label", "Open navigatie menu");
+		navToggle.setAttribute(
+			"title",
+			navToggle.getAttribute("data-open-title"),
+		);
+		navToggle.setAttribute(
+			"aria-label",
+			navToggle.getAttribute("data-open-title"),
+		);
+		navToggle.setAttribute("aria-expanded", "false");
 	} else {
 		nav.setAttribute("data-is-open", "true");
 		navToggle.setAttribute("data-is-open", "true");
-		navToggle.setAttribute("aria-label", "Sluit navigatie menu");
+		navToggle.setAttribute(
+			"title",
+			navToggle.getAttribute("data-close-title"),
+		);
+		navToggle.setAttribute(
+			"aria-label",
+			navToggle.getAttribute("data-close-title"),
+		);
+		navToggle.setAttribute("aria-expanded", "true");
 	}
 }
 
@@ -61,7 +77,6 @@ function applyTheme(theme, isSaved) {
 	document.documentElement.setAttribute("data-theme", theme);
 
 	const icon = document.getElementById("theme-toggle-icon");
-
 	if (theme == "light") {
 		icon.classList.remove("fa-sun");
 		icon.classList.add("fa-moon");
