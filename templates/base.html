@@ -1,5 +1,11 @@
 {% import "macros.html" as macros %}
 
+{% if page %}
+	{% set this = page %}
+{% elif section %}
+	{% set this = section %}
+{% endif %}
+
 <!doctype html>
 <html lang="{{ lang }}">
 	<head>
@@ -9,12 +15,7 @@
 
 		<meta name="author" content="{{ config.author | safe }}" />
 
-		{% set description = config.description %}
-		{% if section.description %}
-			{% set description = section.description %}
-		{% elif page.description %}
-			{% set description = page.description %}
-		{% endif %}
+		{% set description = this.description | default(value=config.description) %}
 		<meta name="description" content="{{ description | safe }}" />
 
 		{% if current_path %}
@@ -22,10 +23,8 @@
 		{% endif %}
 
 		<!-- Title -->
-		{% if section.title %}
-			<title>{{ section.title }} | {{ config.title }}</title>
-		{% elif page.title %}
-			<title>{{ page.title }} | {{ config.title }}</title>
+		{% if this.title %}
+			<title>{{ this.title }} | {{ config.title }}</title>
 		{% else %}
 			<title>{{ config.title }}</title>
 		{% endif %}
@@ -98,10 +97,7 @@
 		{% endif %}
 	</head>
 
-	{% set index = get_section(path="_index.md") %}
-	{% if lang == "en" %}
-		{% set index = get_section(path="_index.en.md") %}
-	{% endif %}
+	{% set index = get_section(path="_index.md", lang=lang) %}
 
 	<body ontouchstart="">
 		<div class="skiplinks">
